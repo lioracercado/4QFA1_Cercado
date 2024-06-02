@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign-up for Learning Website</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Sign-up for this Learning website! :D</h1>
+    <form id="Sign-up" onsubmit="return output();">
+        <fieldset>
+            <legend>Log-in Credentials:</legend>
+
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" onblur="NRBorder()" onfocus="NGBorder()">
+
+            <label for="userName">Username:</label>
+            <input type="text" id="userName" name="userName" onblur="UNRBorder()" onfocus="UNGBorder()">
+
+            <label for="gender">What is your Gender?</label>
+            <select name="gender" id="gender" onblur="GRBorder" onfocus="GGBorder">
+                <option value="">Select gender</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="neither">Prefer not to mention</option>
+            </select>
+
+            <label for="pw">Password:</label>
+            <input type="password" id="pw" name="pw" required onblur="PWRBorder()" onfocus="PWGBorder()">
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required onblur="ERBorder()" onfocus="EGBorder()">
+
+            <label for="address">Home address:</label>
+            <input type="text" id="address" name="address" required onblur="ARBorder()" onfocus="AGBorder()">
+
+            <label for="interests">Write a short paragraph about your interests:</label>
+            <textarea id="tArea" name="interests" rows="5" cols="50" required onblur="IRBorder()" onfocus="IGBorder()"></textarea>
+
+            <input type="submit" value="Finish log-in" id="button">
+            <input type="reset" value="Reset" id="button" onclick="resetAll()">
+        </fieldset>
+    </form>
+
+    <fieldset id="output">
+        <legend>Output</legend>
+        <p id="display"></p>
+    </fieldset>
+
+    <script>
+        function NRBorder() {
+            var input= document.getElementById("name");
+            if (input.value === '') {
+                document.getElementById("name").style.borderColor = "red";
+            } else {
+                input.classList.add('valid');
+            }
+        }
+        function NGBorder() {
+            document.getElementById("name").style.borderColor = "green";
+        }
+
+        function UNRBorder() {
+            var input= document.getElementById("userName");
+            if (input.value === '') {
+                document.getElementById("userName").style.borderColor = "red";
+            } else {
+                input.classList.add('valid');
+            }
+        }
+        function UNGBorder() {
+            document.getElementById("userName").style.borderColor = "green";
+        }
+
+        function GRBorder() {
+            var input= document.getElementById("gender");
+            if (input.value === '') {
+                document.getElementById("gender").style.borderColor = "red";
+            } else {
+                input.classList.add('valid');
+            }
+        }
+        function GGBorder() {
+            document.getElementById("gender").style.borderColor = "green";
+        }
+
+        function PWRBorder() {
+            var input= document.getElementById("pw");
+            if (input.value === '') {
+                document.getElementById("pw").style.borderColor = "red";
+            } else {
+                input.classList.add('valid');
+            }
+        }
+        function PWGBorder() {
+            document.getElementById("pw").style.borderColor = "green";
+        }
+
+        function ERBorder() {
+            var input= document.getElementById("email");
+            if (input.value === '') {
+                document.getElementById("email").style.borderColor = "red";
+            } else {
+                input.classList.add('valid');
+            }
+        }
+        function EGBorder() {
+            document.getElementById("email").style.borderColor = "green";
+        }
+
+        function ARBorder() {
+            var input= document.getElementById("address");
+            if (input.value === '') {
+                document.getElementById("address").style.borderColor = "red";
+            } else {
+                input.classList.add('valid');
+            }
+        }
+        function AGBorder() {
+            document.getElementById("address").style.borderColor = "green";
+        }
+
+        function IRBorder() {
+            var input= document.getElementById("interests");
+            if (input.value === '') {
+                document.getElementById("interests").style.borderColor = "red";
+            } else {
+                input.classList.add('valid');
+            }
+        }
+
+        function IGBorder() {
+            document.getElementById("interests").style.borderColor = "green";
+        }
+
+        function output() {
+            var name = document.getElementById("name").value;
+            var gender = document.getElementById("gender").value;
+            var username = document.getElementById("userName").value;
+            var password = document.getElementById("pw").value;
+            var email = document.getElementById("email").value;
+            var address = document.getElementById("address").value;
+            var interests = document.getElementById("tArea").value;
+
+            document.getElementById("display").innerHTML = 
+                "Name: " + name + "<br>" + 
+                "Username: " + username + "<br>" + 
+                "Password: " + password + "<br>" + 
+                "Gender: " + gender + "<br>" + 
+                "Email: " + email + "<br>" + 
+                "Address: " + address + "<br>" + 
+                "Interests: " + interests;
+
+            return false;
+        }
+
+        function resetAll() {
+            document.getElementById("display").innerHTML = "";
+
+            var elements = ["name", "userName", "pw", "gender", "email", "address", "tArea"];
+            
+            elements.forEach(function(id) {
+                var element = document.getElementById(id);
+                element.classList.remove("red-border", "green-border");
+            });
+        }
+    </script>
+</body>
+</html>
